@@ -17,11 +17,10 @@ class Ewallet:
      self.balance += amount
      print(f"Deposited ${amount}.New balance: ${self.balance}")
 
-def check_history(self):
-        """Affiche l'historique des transactions du portefeuille."""
-        print(f"--- HISTORIQUE DES TRANSACTIONS POUR {self.owner_name} ---")
-        if not hasattr(self, 'history') or not self.history:
-            print("Aucune transaction enregistrée.")
-        else:
-            for transaction in self.history:
-                print(transaction)
+def solde_total(portefeuille, devise_cible="XAF"):
+    """Retourne la valeur totale du portefeuille dans une seule devise."""
+    total = 0
+    for devise, montant in portefeuille["soldes"].items():
+        total += convert(montant, devise, devise_cible)
+    return round(total, 2)
+
